@@ -13,3 +13,6 @@ runner: $(OBJS)
 
 clean:
 	rm -f *.o runner
+
+prog_assemble:
+	as prog.s -o tmp.o && objcopy tmp.o -O binary prog.bin && rm tmp.o && make && qemu runner < prog.bin
